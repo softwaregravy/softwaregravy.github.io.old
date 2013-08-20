@@ -2,9 +2,9 @@
 layout: post
 title: "ActiveRecord Read Only"
 date: 2013-08-05 14:19
-comments: false
 categories: [Rails]
 tags: [ActiveRecord, Rails]
+github-issue-id: 1
 ---
 
 I'm creating a model in Rails which I need to be read only once created. More specifically, I want to make sure it gets created and then is frozen and immutable.
@@ -35,5 +35,5 @@ class ReadOnlyModel < ActiveRecord::Base
   end
 ```
 
-
 Anywone have better suggestions?
+

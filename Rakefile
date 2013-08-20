@@ -2,6 +2,12 @@ require "rubygems"
 require 'rake'
 require 'yaml'
 require 'time'
+require 'octokit'
+
+GITHUB_USER = "softwaregravy"
+GITHUB_REPO = "softwaregravy/softwaregravy.github.io"
+GITHUB_ACCESS_TOKEN = File.open(".github_token", "r").readline.strip
+
 
 SOURCE = "."
 CONFIG = {
@@ -57,6 +63,11 @@ task :post do
   if File.exist?(filename)
     abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
   end
+
+  # create github issue for comments
+  client = Octokit::Client.new(:login => GITHUB_USER, :oauth_token => GITHUB_ACCESS_TOKEN)
+  issue = client.create_issue(GITHUB_REPO, title, "")
+  issue_id = issue.number
   
   puts "Creating new post: #{filename}"
   open(filename, 'w') do |post|
@@ -66,6 +77,7 @@ task :post do
     post.puts 'description: ""'
     post.puts "category: "
     post.puts "tags: #{tags}"
+    post.puts "github-issue-id: #{issue_id}"
     post.puts "---"
     post.puts "{% include JB/setup %}"
   end
