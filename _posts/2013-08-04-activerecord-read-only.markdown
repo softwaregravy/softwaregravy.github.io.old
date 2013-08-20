@@ -15,13 +15,14 @@ My plan was to just add a `before_update` hook which always fails. Something lik
 
 Then I thought, there's gotta be a better way. Did some digging, and found the `readonly?` method on ActiveRecord::Base. Decided to give it a try.
 
-``` ruby
+```ruby
 class ReadOnlyModel < ActiveRecord::Base
   def readonly?
     true
   end
 end
 ```
+
 
 Unfortunately, this prevents creation as well. 
 
@@ -35,5 +36,6 @@ class ReadOnlyModel < ActiveRecord::Base
     errors.add(:id, "Model is readonly")
   end
 ```
+
 
 Anywone have better suggestions?
