@@ -2,10 +2,9 @@
 layout: post
 title: "Curl with http basic auth token"
 description: ""
-category: 
+category: Curl
 tags: []
 ---
-{% include JB/setup %}
 
 Was trying to send a token on HTTP Basic Auth using a token. Took me a while to get it just right.
 
