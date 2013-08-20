@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ActiveRecord Read Only"
-date: 2013-08-04 14:19
+date: 2013-08-05 14:19
 comments: false
 categories: [Rails]
 tags: [ActiveRecord, Rails]
