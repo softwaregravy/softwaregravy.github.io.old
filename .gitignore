@@ -10,3 +10,6 @@ Thumbs.db
 .rvmrc
 
 .github_token
+
+*.swo
+*.swp
